@@ -7,10 +7,10 @@
   </head>
   <body>
     <div id="app">
-      <table>
+      <table class="ui celled padded table">
         <thead>
           <tr>
-            <th colspan="7">Menu de la semaine</th>
+            <th colspan="7" class="ui center aligned header">Menu de la semaine</th>
           </tr>
           <tr>
             <th></th>
@@ -20,6 +20,7 @@
         </thead>
         <tbody>
           <tr v-for="x in 2">
+            <td class="center aligned"> {{ repas[x-1] }}</td>
             <td v-for="y in 7">
               <recette-component v-bind:recette="recettes[randomIndex()]"></recette-component>
             </td>
