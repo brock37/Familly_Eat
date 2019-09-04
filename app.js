@@ -46,6 +46,7 @@ let vm = new Vue({
       "Vendredi",
       "Samedi",
       "Dimanche"
-    ]
+    ],
+    repas: [ "Midi", "Soir"]
   }
 })
