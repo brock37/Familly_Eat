@@ -1,4 +1,5 @@
-var recetteComponent= {
+
+let recette = {
   props: ['recette'],
   template: `
     <div>
@@ -11,42 +12,287 @@ var recetteComponent= {
   `
 }
 
-let vm = new Vue({
-  el: "#app",
-  components: {
-    'recette-component': recetteComponent
-  },
+let menusemaine = {
+  //import MY_JSON from './recettes.json'
+
+  components: {recette},
+
   methods: {
     randomIndex: function () {
       return Math.floor(Math.random() * this.recettes.length)
     }
   },
-  data: {
-    recettes: [
-      {id: 1, nom: "Riz au lait", prepareTime: 15, cookTime: 5},
-      {id: 2, nom: "Hamburger", prepareTime: 25, cookTime: 1},
-      {id: 3, nom: "Jambbon nouilles", prepareTime: 5, cookTime: 3},
-      {id: 4, nom: "Cookies", prepareTime: 15, cookTime: 5},
-      {id: 5, nom: "Salade de pomme de terre", prepareTime: 25, cookTime: 1},
-      {id: 6, nom: "steak frites", prepareTime: 5, cookTime: 3},
-      {id: 7, nom: "Pudding", prepareTime: 15, cookTime: 5},
-      {id: 8, nom: "Sandwich", prepareTime: 25, cookTime: 1},
-      {id: 9, nom: "Cordon bleu haricots vert", prepareTime: 5, cookTime: 3},
-      {id: 10, nom: "Salami", prepareTime: 15, cookTime: 5},
-      {id: 11, nom: "Goiave", prepareTime: 25, cookTime: 1},
-      {id: 12, nom: "Yaourt", prepareTime: 15, cookTime: 5},
-      {id: 13, nom: "Saucisse purée", prepareTime: 25, cookTime: 1},
-      {id: 14, nom: "Pates au thons", prepareTime: 5, cookTime: 3}
-    ],
-    JourSemaine: [
-      "Lundi",
-      "Mardi",
-      "Mercredi",
-      "Jeudi",
-      "Vendredi",
-      "Samedi",
-      "Dimanche"
-    ],
-    repas: [ "Midi", "Soir"]
-  }
+  data: function() {
+    return {
+      //myJson: MY_JSON,
+      recettes: [
+        {
+          "id" : 1,
+          "nom" : "Brochettes de poulet yalitori",
+          "prepareTime" : 15,
+          "cookTime" : 4,
+          "sleepTime" : 0,
+          "kcal": 250
+        },
+        {
+          "id" : 2,
+          "nom" : "Calamars à la provencale",
+          "prepareTime" : 15,
+          "cookTime" : 15,
+          "sleepTime" : 0,
+          "kcal": 324
+        },
+        {
+          "id" : 3,
+          "nom" : "Blanquette de Cabillaud",
+          "prepareTime" : 20,
+          "cookTime" : 30,
+          "sleepTime" : 0,
+          "kcal": 326
+        },
+        {
+          "id" : 4,
+          "nom" : "Croq'pesto & chèvre",
+          "prepareTime" : 5,
+          "cookTime" : 5,
+          "sleepTime" : 0,
+          "kcal": 480
+        },
+        {
+          "id" : 5,
+          "nom" : "Frittata pizza",
+          "prepareTime" : 5,
+          "cookTime" : 15,
+          "sleepTime" : 0,
+          "kcal": 354
+        },
+        {
+          "id" : 6,
+          "nom" : "Gratin de légumes",
+          "prepareTime" : 20,
+          "cookTime" : 35,
+          "sleepTime" : 0,
+          "kcal": 150
+        },
+        {
+          "id" : 7,
+          "nom" : "Risotto potimarron & noisettes",
+          "prepareTime" : 15,
+          "cookTime" : 2,
+          "sleepTime" : 0,
+          "kcal": 330
+        },
+        {
+          "id" : 8,
+          "nom" : "Cuisse de poulet façon basquaise",
+          "prepareTime" : 10,
+          "cookTime" : 30,
+          "sleepTime" : 0,
+          "kcal": 200
+        },
+        {
+          "id" : 9,
+          "nom" : "Paëlla végétarienne",
+          "prepareTime" : 10,
+          "cookTime" : 20,
+          "sleepTime" : 0,
+          "kcal": 340
+        },
+        {
+          "id" : 10,
+          "nom" : "Kebab minceur",
+          "prepareTime" : 20,
+          "cookTime" : 15,
+          "sleepTime" : 0,
+          "kcal": 336
+        },
+        {
+          "id" : 11,
+          "nom" : "Crumble de ratatouille",
+          "prepareTime" : 10,
+          "cookTime" : 20,
+          "sleepTime" : 0,
+          "kcal": 184
+        },
+        {
+          "id" : 12,
+          "nom" : "Noix de saint-jacques poêlées & purée de chou-fleur",
+          "prepareTime" : 20,
+          "cookTime" : 25,
+          "sleepTime" : 0,
+          "kcal": 176
+        },
+        {
+          "id" : 13,
+          "nom" : "One pot riz tomates & poulet",
+          "prepareTime" : 10,
+          "cookTime" : 30,
+          "sleepTime" : 0,
+          "kcal": 352
+        },
+        {
+          "id" : 14,
+          "nom" : "Paupiette de dinde & carottes",
+          "prepareTime" : 25,
+          "cookTime" : 30,
+          "sleepTime" : 0,
+          "kcal": 372
+        },
+        {
+          "id" : 15,
+          "nom" : "Parmentier de saumon",
+          "prepareTime" : 25,
+          "cookTime" : 30,
+          "sleepTime" : 0,
+          "kcal": 385
+        },
+        {
+          "id" : 16,
+          "nom" : "Tatin de courgettes",
+          "prepareTime" : 10,
+          "cookTime" : 25,
+          "sleepTime" : 0,
+          "kcal": 338
+        },
+        {
+          "id" : 17,
+          "nom" : "Poke bowl mangue avocat riz",
+          "prepareTime" : 15,
+          "cookTime" : 10,
+          "sleepTime" : 0,
+          "kcal": 485
+        },
+        {
+          "id" : 18,
+          "nom" : "quiche légère au thon",
+          "prepareTime" : 5,
+          "cookTime" : 45,
+          "sleepTime" : 0,
+          "kcal": 200
+        },
+        {
+          "id" : 19,
+          "nom" : "One pot pasta dinde & sauce au fromage",
+          "prepareTime" : 5,
+          "cookTime" : 10,
+          "sleepTime" : 0,
+          "kcal": 398
+        },
+        {
+          "id" : 20,
+          "nom" : "Lasagnes de chou",
+          "prepareTime" : 10,
+          "cookTime" : 30,
+          "sleepTime" : 0,
+          "kcal": 293
+        },
+        {
+          "id" : 21,
+          "nom" : "Pâtes & petits pois",
+          "prepareTime" : 20,
+          "cookTime" : 10,
+          "sleepTime" : 0,
+          "kcal": 395
+        },
+        {
+          "id" : 22,
+          "nom" : "Filet mignon à la crème moutarde",
+          "prepareTime" : 10,
+          "cookTime" : 20,
+          "sleepTime" : 0,
+          "kcal": 391
+        },
+        {
+          "id" : 23,
+          "nom" : "Clafoutis de brocoli au roquefort",
+          "prepareTime" : 10,
+          "cookTime" : 40,
+          "sleepTime" : 0,
+          "kcal": 371
+        },
+        {
+          "id" : 24,
+          "nom" : "Cabillaud en papillote",
+          "prepareTime" : 15,
+          "cookTime" : 20,
+          "sleepTime" : 0,
+          "kcal": 379
+        },
+        {
+          "id" : 25,
+          "nom" : "Quiche sans pâte saumon & courgettes",
+          "prepareTime" : 10,
+          "cookTime" : 30,
+          "sleepTime" : 0,
+          "kcal": 364
+        },
+        {
+          "id" : 26,
+          "nom" : "Wok de nouilles au poulet",
+          "prepareTime" : 15,
+          "cookTime" : 15,
+          "sleepTime" : 0,
+          "kcal": 362
+        },
+        {
+          "id" : 27,
+          "nom" : "Dorade au four & ses petits légumes",
+          "prepareTime" : 5,
+          "cookTime" : 20,
+          "sleepTime" : 0,
+          "kcal": 430
+        },
+        {
+          "id" : 28,
+          "nom" : "Dinde à la purée de marrons",
+          "prepareTime" : 15,
+          "cookTime" : 10,
+          "sleepTime" : 0,
+          "kcal": 360
+        }
+      ],
+      JourSemaine: [
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Jeudi",
+        "Vendredi",
+        "Samedi",
+        "Dimanche"
+      ],
+      repas: [ "Midi", "Soir"]
+    }
+  },
+    template:`
+    <table class="ui celled padded table">
+      <thead>
+        <tr>
+          <th colspan="8" class="ui center aligned header">Menu de la semaine</th>
+        </tr>
+        <tr>
+          <th></th>
+          <th v-for="jour in JourSemaine" class="center aligned"> {{ jour }}</th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <tr v-for="x in 2">
+          <td class="center aligned"> {{ repas[x-1] }}</td>
+          <td v-for="y in 7">
+            <ul>
+              <li>Nom : {{ recettes[randomIndex()].nom }}</li>
+              <li>Temps de préparation : {{ recettes[randomIndex()].prepareTime }}</li>
+              <li>Temps de cuisson : {{ recettes[randomIndex()].cookTime }}</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>`
+}
+
+let vm = new Vue({
+
+  el: "#app",
+  components: {menusemaine}
+
 })

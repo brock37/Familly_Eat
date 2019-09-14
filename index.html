@@ -7,26 +7,7 @@
   </head>
   <body>
     <div id="app" class="ui container">
-      <table class="ui celled padded table">
-        <thead>
-          <tr>
-            <th colspan="8" class="ui center aligned header">Menu de la semaine</th>
-          </tr>
-          <tr>
-            <th></th>
-            <th v-for="jour in JourSemaine" class="center aligned"> {{ jour }}</th>
-          </tr>
-
-        </thead>
-        <tbody>
-          <tr v-for="x in 2">
-            <td class="center aligned"> {{ repas[x-1] }}</td>
-            <td v-for="y in 7">
-              <recette-component v-bind:recette="recettes[randomIndex()]"></recette-component>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <menusemaine></menusemaine>
 
     </div>
 
