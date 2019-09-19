@@ -26,18 +26,9 @@
 <script>
 export default {
 
-
   data(){
     return{
-      JourSemaine: [
-        "Lundi",
-        "Mardi",
-        "Mercredi",
-        "Jeudi",
-        "Vendredi",
-        "Samedi",
-        "Dimanche"
-      ],
+      JourSemaine: ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
       repas: [ "Midi", "Soir"]
     }
   }
