@@ -48,6 +48,15 @@ export default {
     randomMeal(){
       return this.bookMeal[this.randomIndex()]
     },
+    uniqueMeal(){
+      let newMeal= this.randomMeal()
+
+      do{
+        newMeal= this.randomMeal()
+      }while(this.inArray(newMeal.id))
+
+      return newMeal
+    },
     inArray(id){
       let res= false
       for(var x = 0; x<this.mealForWeek.length; x++ ){
@@ -58,24 +67,12 @@ export default {
       return res
     },
     changeMeal(index){
-      let newMeal= this.randomMeal()
-
-      do{
-        newMeal= this.randomMeal()
-      }while(this.inArray(newMeal.id))
-
-      Vue.set(this.mealForWeek, index, newMeal)
+      Vue.set(this.mealForWeek, index, this.uniqueMeal())
     }
   },
   created(){
     for(let i= 0; i <14; i++){
-      let tmp =this.randomMeal()
-      //On evite les doublons de recette dans la semaine
-      do{
-        tmp= this.randomMeal()
-      }while(this.inArray(tmp.id))
-
-      this.mealForWeek.push(tmp)
+      this.mealForWeek.push(this.uniqueMeal())
     }
   }
 
