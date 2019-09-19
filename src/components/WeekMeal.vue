@@ -44,7 +44,7 @@ export default {
     randomIndex(){
       return Math.floor(Math.random() * this.bookMeal.length)
     },
-    randomMeal(id){
+    randomMeal(){
       return this.bookMeal[this.randomIndex()]
     },
     inArray(id){
