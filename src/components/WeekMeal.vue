@@ -15,7 +15,7 @@
         <tr v-for="x in 2">
           <td class="center aligned"> {{ repas[x-1] }}</td>
           <td v-for="y in 7">
-            <Meal :meal="mealForWeek[(y-1)+(x-1)*6]" v-on:change-meal="changeMeal((y-1)+(x-1)*6)"/>
+            <Meal :meal="mealForWeek[(y-1)+(x-1)*7]" v-on:change-meal="changeMeal((y-1)+(x-1)*7)"/>
           </td>
         </tr>
       </tbody>
@@ -68,7 +68,7 @@ export default {
     }
   },
   created(){
-    for(let i= 0; i <13; i++){
+    for(let i= 0; i <14; i++){
       let tmp =this.randomMeal()
       //On evite les doublons de recette dans la semaine
       do{
