@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import Meal from './Meal.vue'
 import BookMeal from '../assets/recettes.json'
 export default {
@@ -67,7 +66,7 @@ export default {
       return res
     },
     changeMeal(index){
-      Vue.set(this.mealForWeek, index, this.uniqueMeal())
+      this.mealForWeek.splice(index,1,this.uniqueMeal())
     }
   },
   created(){
