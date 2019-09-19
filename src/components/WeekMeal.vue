@@ -15,7 +15,7 @@
         <tr v-for="x in 2">
           <td class="center aligned"> {{ repas[x-1] }}</td>
           <td v-for="y in 7">
-            <Meal :meal="mealForWeek[(y-1)+(x-1)*6]" v-on:change-meal="changeMeal($event)"/>
+            <Meal :meal="mealForWeek[(y-1)+(x-1)*6]" v-on:change-meal="changeMeal((y-1)+(x-1)*6)"/>
           </td>
         </tr>
       </tbody>
@@ -57,10 +57,14 @@ export default {
       }
       return res
     },
-    changeMeal(meal){
-      console.log("changeemnt");
-      let index= this.mealForWeek.indexOf(meal)
-      Vue.set(this.mealForWeek, index, this.randomMeal())
+    changeMeal(index){
+      let newMeal= this.randomMeal()
+
+      do{
+        newMeal= this.randomMeal()
+      }while(this.inArray(newMeal.id))
+
+      Vue.set(this.mealForWeek, index, newMeal)
     }
   },
   created(){
