@@ -1,25 +1,24 @@
 <template lang="html">
-  <div class="weekmeal">
-    <table class="ui celled padded table">
-      <thead>
-        <tr>
-          <th colspan="8" class="ui center aligned header">Menu de la semaine</th>
-        </tr>
-        <tr>
-          <th></th>
-          <th v-for="jour in JourSemaine" class="center aligned"> {{ jour }}</th>
-        </tr>
+  <div class="weekmeal ui center aligned container">
+    <h1>Menu de la semaine</h1>
+    <div class="ui celled list ">
+      <div class="item" v-for="jour in JourSemaine">
+        <div class="header">{{ jour }}</div>
+          <div class="content" >
 
-      </thead>
-      <tbody>
-        <tr v-for="x in 2">
-          <td class="center aligned"> {{ repas[x-1] }}</td>
-          <td v-for="y in 7">
-            <Meal :meal="mealForWeek[(y-1)+(x-1)*7]" v-on:change-meal="changeMeal((y-1)+(x-1)*7)"/>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <div class="ui horizontal list">
+              <div class="item" v-for="r in repas">
+                <div class="content">
+                  <div class="header">{{ r }}</div>
+                  <Meal :meal="mealForWeek[JourSemaine.indexOf(jour) + repas.indexOf(r) * 7]" v-on:change-meal="changeMeal(JourSemaine.indexOf(jour) + repas.indexOf(r) * 7)"/>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
