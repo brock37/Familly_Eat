@@ -5,8 +5,8 @@
         <div class="header">
           Nom : {{ meal.nom }}
         </div>
-        Temps de préparation : {{ meal.prepareTime }}
-        Temps de cuisson : {{ meal.cookTime }}
+        <i class="clock outline icon"></i>Préparation : {{ meal.prepareTime }} |
+        <i class="clock outline icon"></i>Cuisson : {{ meal.cookTime }}
       </div>
     </div>
   </div>
