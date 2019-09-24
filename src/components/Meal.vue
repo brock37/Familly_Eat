@@ -1,14 +1,14 @@
 <template lang="html">
-  <div class="main">
-    <ul>
-      <li>Id : {{ meal.id }}</li>
-      <li>Nom : {{ meal.nom }}</li>
-      <li>Temps de préparation : {{ meal.prepareTime }}</li>
-      <li>Temps de cuisson : {{ meal.cookTime }}</li>
-      <div class="ui right floated small primary icon button" @click.prevent="changeMeal(meal)">
-        <i class="exchange icon"></i>
+  <div class="ui horizontal list" @click.prevent="changeMeal(meal)">
+    <div class="item">
+      <div class="content">
+        <div class="header">
+          Nom : {{ meal.nom }}
+        </div>
+        Temps de préparation : {{ meal.prepareTime }}
+        Temps de cuisson : {{ meal.cookTime }}
       </div>
-    </ul>
+    </div>
   </div>
 
 </template>
