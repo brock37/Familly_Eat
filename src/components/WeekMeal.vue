@@ -33,7 +33,7 @@ export default {
   },
   data(){
     return{
-      bookMeal : BookMeal,
+      cookBook : BookMeal,
       mealForWeek : [],
       JourSemaine: ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
       repas: [ "Midi", "Soir"]
@@ -41,10 +41,10 @@ export default {
   },
   methods :{
     randomIndex(){
-      return Math.floor(Math.random() * this.bookMeal.length)
+      return Math.floor(Math.random() * this.cookBook.length)
     },
     randomMeal(){
-      return this.bookMeal[this.randomIndex()]
+      return this.cookBook[this.randomIndex()]
     },
     uniqueMeal(){
       let newMeal= this.randomMeal()
