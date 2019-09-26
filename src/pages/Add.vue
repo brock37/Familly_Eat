@@ -54,7 +54,8 @@ export default {
       nom : "",
       prepareTime: undefined,
       cookTime: undefined,
-      kcal : undefined
+      kcal : undefined,
+      arr:[]
     }
   },
   computed :{
@@ -77,11 +78,24 @@ export default {
     submitMeal(){
       if(this.nom === ""){
         console.log("Pas de nom")
+        return
       }
-      if(this.prepareTime !== Number){
-        console.log("entrer un chiffre")
+      if(this.prepareTime === undefined){
+        console.log("Pas de temps de preparation")
+        return
+      }
+      if(this.kcal === undefined){
+        console.log("Pas de Kcal")
+        return
+      }
+      if(this.cookTime === undefined){
+        this.cookTime = 0
       }
 
+      this.prepareTime = Number(this.prepareTime)
+      this.cookTime = Number(this.cookTime)
+      this.kcal = Number(this.kcal)
+      this.cookBook.push({"id": this.lastIndex, nom : this.nom, prepareTime : this.prepareTime, cookTime : this.cookTime, kcal : this.kcal})
     }
   }
 
