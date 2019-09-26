@@ -57,7 +57,18 @@ export default {
       return this.cookBook[this.cookBook.length - 1].id + 1
     }
   },
+  methods : {
+    submitMeal(){
+      if(this.nom === ""){
+        console.log("Pas de nom")
+      }
+      if(this.prepareTime !== Number){
+        console.log("entrer un chiffre")
+      }
+
+    }
   }
+
 }
 </script>
 
