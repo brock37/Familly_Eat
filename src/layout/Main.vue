@@ -1,11 +1,7 @@
 <template lang="html">
-  <div class="ui center aligned container">
-    <ul>
-      <li>
-        <v-link href="/">Home</v-link>
-        <v-link href="/add">AJouter recette</v-link>
-      </li>
-    </ul>
+  <div class="ui three item menu">
+    <v-link class="item active" href="/">Home</v-link>
+    <v-link class="item active" href="/add">AJouter recette</v-link>
 
     <slot></slot>
   </div>
@@ -23,5 +19,5 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="css" src="../assets/Semantic-UI-CSS-master/semantic.css">
 </style>
