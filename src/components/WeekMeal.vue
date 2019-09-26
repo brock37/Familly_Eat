@@ -1,6 +1,5 @@
 <template lang="html">
   <div class="weekmeal ui center aligned segment container">
-    <h1>Menu de la semaine</h1>
     <div class="ui divided list">
       <div class="item" v-for="jour in JourSemaine">
         <div class="ui header">{{ jour }}</div>

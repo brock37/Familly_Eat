@@ -1,7 +1,8 @@
 <template lang="html">
-<div class="">
+<div class="ui center aligned container">
   <main-layout>
   </main-layout>
+  <h1>Menu de la semaine</h1>
   <WeekMeal/>
 </div>
 </template>
