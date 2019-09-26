@@ -27,8 +27,13 @@
         <input type="number" name="kcal" placeholder="0" v-model="kcal">
       </div>
     </div>
-    <div class="field">
-      <div class="ui primary submit button" @click.prevent="submitMeal()">Submit</div>
+    <div class="fields">
+      <div class="field">
+        <div class="ui primary submit button" @click.prevent="submitMeal()">Submit</div>
+      </div>
+      <div class="field">
+        <div class="ui primary submit button" @click.prevent="saveFile()">Download</div>
+      </div>
     </div>
   </div>
 </div>
