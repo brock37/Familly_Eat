@@ -3,7 +3,9 @@
      v-bind:class="{active :isActive}"
      v-on:click.prevent="go"
 
-  ></a>
+  >
+  <slot></slot>
+</a>
 
 </template>
 
