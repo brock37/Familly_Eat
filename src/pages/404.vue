@@ -1,7 +1,9 @@
 <template lang="html">
-<main-layout>
+<div class="">
+  <main-layout/>
   <p>404 Pages not found</p>
-</main-layout>
+</div>
+
 </template>
 
 <script>
