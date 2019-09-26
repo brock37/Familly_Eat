@@ -55,7 +55,7 @@ export default {
 
       return newMeal
     },
-    inArray(id){
+    inArray(id){  //Regarde si la recette est deja utiliser dans la liste du menu de la semaine
       let res= false
       for(var x = 0; x<this.mealForWeek.length; x++ ){
         if(this.mealForWeek[x].id == id){
