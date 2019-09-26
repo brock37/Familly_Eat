@@ -22,11 +22,11 @@ export default {
     }
   },
   methods: {
-    go (event) {
+    go () {
       this.$root.currentRoute = this.href
       window.history.pushState(
         null,
-        route[this.href],
+        routes[this.href],
         this.href
       )
     }
