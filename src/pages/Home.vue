@@ -1,16 +1,19 @@
 <template lang="html">
+<div class="">
   <main-layout>
-    <WeekMeal/>
   </main-layout>
-
+  <WeekMeal/>
+</div>
 </template>
 
 <script>
 import MainLayout from "../layout/Main.vue"
+import WeekMeal from "../components/WeekMeal.vue"
 
 export default {
   components : {
-    MainLayout
+    MainLayout,
+    WeekMeal
   }
 }
 </script>
