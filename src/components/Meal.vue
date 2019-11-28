@@ -20,12 +20,29 @@ export default {
     Overlay
   },
   props:{
+    cookbook: Array,
     meal: {
       type: Object,
       required: true
+    },
+    idmealweek: Number
+  },
+  data(){
+    return{
+      showSearch: false
     }
   },
     methods:{
+      showSearchOverlay(){
+        this.showSearch = true
+      },
+      validMeal: function(newMeal){
+        console.log("Reception validMeal")
+        this.$emit("change-meal", [this.idmealweek, newMeal])
+        this.closeOverlay()
+      },
+      closeOverlay(){
+        this.showSearch = false
       }
     }
 }
