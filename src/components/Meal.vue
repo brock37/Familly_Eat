@@ -2,7 +2,8 @@
   <div class="meal ui horizontal list" >
     <div class="item">
       <div class="content">
-        <div class="header">
+        <Overlay :cookbook="cookbook" v-if="showSearch" @valid-meal="validMeal" @cancel-meal="closeOverlay"/>
+        <div class="header" @click.prevent="showSearchOverlay()">
           Nom : {{ meal.nom }}
         </div>
         <i class="clock outline icon"></i>Préparation : {{ meal.prepareTime }} |
