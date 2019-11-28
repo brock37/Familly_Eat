@@ -9,7 +9,7 @@
               <div class="item" v-for="r in repas">
                 <div class="content">
                   <div class="header">{{ r }}</div>
-                  <Meal :meal="mealForWeek[JourSemaine.indexOf(jour) + repas.indexOf(r) * 7]" v-on:change-meal="changeMeal(JourSemaine.indexOf(jour) + repas.indexOf(r) * 7)"/>
+                  <Meal :cookbook="cookBook" :meal="mealForWeek[JourSemaine.indexOf(jour) + repas.indexOf(r) * 7]" :idmealweek="JourSemaine.indexOf(jour) + repas.indexOf(r) * 7" @change-meal="changeMeal"/>
                 </div>
               </div>
             </div>
@@ -62,8 +62,9 @@ export default {
       }
       return res
     },
-    changeMeal(index){
-      this.mealForWeek.splice(index,1,this.uniqueMeal())
+    changeMeal(arg){
+      console.log(arg);
+      this.mealForWeek.splice(arg[0],1,arg[1])
     }
   },
   created(){
