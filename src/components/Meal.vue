@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="ui horizontal list" @click.prevent="changeMeal(meal)">
+  <div class="meal ui horizontal list" >
     <div class="item">
       <div class="content">
         <div class="header">
@@ -22,8 +22,6 @@ export default {
     }
   },
     methods:{
-      changeMeal(meal){
-        this.$emit("change-meal", meal)
       }
     }
 }
