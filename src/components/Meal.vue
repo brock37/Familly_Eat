@@ -14,7 +14,11 @@
 </template>
 
 <script>
+import Overlay from './Overlay.vue'
 export default {
+  components:{
+    Overlay
+  },
   props:{
     meal: {
       type: Object,
