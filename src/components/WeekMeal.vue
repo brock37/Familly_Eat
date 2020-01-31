@@ -67,9 +67,12 @@ export default {
     }
   },
   created(){
-    for(let i= 0; i <14; i++){
-      this.mealForWeek.mealSelected.push(this.uniqueMeal())
+    if (this.mealForWeek.mealSelected.length <= 0){
+      for(let i= 0; i <14; i++){
+        this.mealForWeek.mealSelected.push(this.uniqueMeal())
+      }
     }
+
   }
 
 }
