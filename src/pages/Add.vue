@@ -41,8 +41,6 @@
 
 <script>
 import MainLayout from "../layout/Main.vue"
-import BookMeal from '../assets/recettes.json'
-
 
 export default {
   components : {
@@ -50,7 +48,6 @@ export default {
   },
   data (){
     return {
-      cookBook : BookMeal,
       nom : "",
       prepareTime: undefined,
       cookTime: undefined,
@@ -60,12 +57,15 @@ export default {
   },
   computed :{
     lastIndex(){
-      return this.cookBook[this.cookBook.length - 1].id + 1
+      return this.cookBook.state.cookBook[this.cookBook.state.cookBook.length - 1].id + 1
+    },
+    cookBook () {
+      return this.$root.$data.store
     }
   },
   methods : {
     saveFile: function() {
-      const data = JSON.stringify(this.cookBook)
+      const data = JSON.stringify(this.cookBook.state.cookBook)
       const blob = new Blob([data], {type: 'text/plain'})
       const e = document.createEvent('MouseEvents'),
       a = document.createElement('a');
@@ -95,7 +95,7 @@ export default {
       this.prepareTime = Number(this.prepareTime)
       this.cookTime = Number(this.cookTime)
       this.kcal = Number(this.kcal)
-      this.cookBook.push({"id": this.lastIndex, nom : this.nom, prepareTime : this.prepareTime, cookTime : this.cookTime, kcal : this.kcal})
+      this.cookBook.addMeal({"id": this.lastIndex, nom : this.nom, prepareTime : this.prepareTime, cookTime : this.cookTime, kcal : this.kcal})
     }
   }
 

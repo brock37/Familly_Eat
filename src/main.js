@@ -1,12 +1,21 @@
 import Vue from 'vue'
 import routes from './routes.js'
+import BookMeal from './assets/recettes.json'
 
 Vue.config.productionTip = true
 
 const app = new Vue({
   el: '#app',
   data: {
-    currentRoute : window.location.pathname
+    currentRoute : window.location.pathname,
+    store: {
+      state: {
+        cookBook: BookMeal,
+      },
+      addMeal (newMeal) {
+        this.state.cookBook.push(newMeal)
+      }
+    }
   },
   computed: {
     ViewComponent () {

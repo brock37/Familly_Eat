@@ -22,7 +22,7 @@
 
 <script>
 import Meal from './Meal.vue'
-import BookMeal from '../assets/recettes.json'
+
 export default {
 
   components:
@@ -31,18 +31,22 @@ export default {
   },
   data(){
     return{
-      cookBook : BookMeal,
       mealForWeek : [],
       JourSemaine: ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
       repas: [ "Midi", "Soir"]
     }
   },
+  computed : {
+    cookBook () {
+      return this.$root.$data.store
+    }
+  },
   methods :{
     randomIndex(){
-      return Math.floor(Math.random() * this.cookBook.length)
+      return Math.floor(Math.random() * this.cookBook.state.cookBook.length)
     },
     randomMeal(){
-      return this.cookBook[this.randomIndex()]
+      return this.cookBook.state.cookBook[this.randomIndex()]
     },
     uniqueMeal(){
       let newMeal= this.randomMeal()
