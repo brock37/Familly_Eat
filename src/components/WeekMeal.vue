@@ -9,7 +9,7 @@
               <div class="item" v-for="r in repas">
                 <div class="content">
                   <div class="header">{{ r }}</div>
-                  <Meal :meal="mealForWeek[JourSemaine.indexOf(jour) + repas.indexOf(r) * 7]" v-on:change-meal="changeMeal(JourSemaine.indexOf(jour) + repas.indexOf(r) * 7)"/>
+                  <Meal :meal="mealForWeek.mealSelected[JourSemaine.indexOf(jour) + repas.indexOf(r) * 7]" v-on:change-meal="changeMeal(JourSemaine.indexOf(jour) + repas.indexOf(r) * 7)"/>
                 </div>
               </div>
             </div>
@@ -31,7 +31,6 @@ export default {
   },
   data(){
     return{
-      mealForWeek : [],
       JourSemaine: ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
       repas: [ "Midi", "Soir"]
     }
@@ -39,6 +38,9 @@ export default {
   computed : {
     cookBook () {
       return this.$root.$data.store.state.cookBook
+    },
+    mealForWeek () {
+      return this.$root.$data.store.state.mealForWeek
     }
   },
   methods :{
@@ -59,20 +61,20 @@ export default {
     },
     inArray(id){  //Regarde si la recette est deja utiliser dans la liste du menu de la semaine
       let res= false
-      for(var x = 0; x<this.mealForWeek.length; x++ ){
-        if(this.mealForWeek[x].id == id){
+      for(var x = 0; x<this.mealForWeek.mealSelected.length; x++ ){
+        if(this.mealForWeek.mealSelected[x].id == id){
           res= true
         }
       }
       return res
     },
     changeMeal(index){
-      this.mealForWeek.splice(index,1,this.uniqueMeal())
+      this.mealForWeek.mealSelected.splice(index,1,this.uniqueMeal())
     }
   },
   created(){
     for(let i= 0; i <14; i++){
-      this.mealForWeek.push(this.uniqueMeal())
+      this.mealForWeek.mealSelected.push(this.uniqueMeal())
     }
   }
 

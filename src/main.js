@@ -15,6 +15,9 @@ const app = new Vue({
           addMeal : function (newMeal) {
             this.cookBook.push(newMeal)
           }
+        },
+        mealForWeek: {
+          mealSelected : []
         }
       },
     }
