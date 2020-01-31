@@ -52,15 +52,13 @@ export default {
       prepareTime: undefined,
       cookTime: undefined,
       kcal : undefined,
-      arr:[]
+      arr:[],
+      cookBook : this.$root.$data.store.state.cookBook
     }
   },
   computed :{
     lastIndex(){
       return this.cookBook.cookBook[this.cookBook.cookBook.length - 1].id + 1
-    },
-    cookBook () {
-      return this.$root.$data.store.state.cookBook
     }
   },
   methods : {

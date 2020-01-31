@@ -31,16 +31,10 @@ export default {
   },
   data(){
     return{
+      cookBook : this.$root.$data.store.state.cookBook,
+      mealForWeek : this.$root.$data.store.state.mealForWeek,
       JourSemaine: ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
       repas: [ "Midi", "Soir"]
-    }
-  },
-  computed : {
-    cookBook () {
-      return this.$root.$data.store.state.cookBook
-    },
-    mealForWeek () {
-      return this.$root.$data.store.state.mealForWeek
     }
   },
   methods :{
