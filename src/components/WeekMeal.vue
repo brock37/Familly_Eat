@@ -38,15 +38,15 @@ export default {
   },
   computed : {
     cookBook () {
-      return this.$root.$data.store
+      return this.$root.$data.store.state.cookBook
     }
   },
   methods :{
     randomIndex(){
-      return Math.floor(Math.random() * this.cookBook.state.cookBook.length)
+      return Math.floor(Math.random() * this.cookBook.cookBook.length)
     },
     randomMeal(){
-      return this.cookBook.state.cookBook[this.randomIndex()]
+      return this.cookBook.cookBook[this.randomIndex()]
     },
     uniqueMeal(){
       let newMeal= this.randomMeal()

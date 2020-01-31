@@ -57,15 +57,15 @@ export default {
   },
   computed :{
     lastIndex(){
-      return this.cookBook.state.cookBook[this.cookBook.state.cookBook.length - 1].id + 1
+      return this.cookBook.cookBook[this.cookBook.cookBook.length - 1].id + 1
     },
     cookBook () {
-      return this.$root.$data.store
+      return this.$root.$data.store.state.cookBook
     }
   },
   methods : {
     saveFile: function() {
-      const data = JSON.stringify(this.cookBook.state.cookBook)
+      const data = JSON.stringify(this.cookBook.cookBook)
       const blob = new Blob([data], {type: 'text/plain'})
       const e = document.createEvent('MouseEvents'),
       a = document.createElement('a');

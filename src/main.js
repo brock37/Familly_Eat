@@ -10,12 +10,15 @@ const app = new Vue({
     currentRoute : window.location.pathname,
     store: {
       state: {
-        cookBook: BookMeal,
+        cookBook: {
+          cookBook : BookMeal,
+          addMeal : function (newMeal) {
+            this.cookBook.push(newMeal)
+          }
+        }
       },
-      addMeal (newMeal) {
-        this.state.cookBook.push(newMeal)
-      }
     }
+
   },
   computed: {
     ViewComponent () {
