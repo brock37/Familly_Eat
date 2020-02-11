@@ -2,7 +2,7 @@
   <div class="overlay">
     <input type="text" name="search" placeholder="Nom de la recette" list="meal-names" v-model:value="name">
     <datalist id="meal-names">
-      <option v-for="meal in cookbook" v-bind:value="meal.nom"/>
+      <option v-for="meal in cookBook.cookBook" v-bind:value="meal.nom"/>
     </datalist>
     <br>
     <button type="button" name="randomMeal" @click.prevent="randomMeal()">Aleatoire</button>
@@ -15,11 +15,9 @@
 <script>
 
 export default {
-  props:{
-    cookbook: Array
-  },
   data(){
     return{
+      cookBook : this.$root.$data.store.state.cookBook,
       name: "",
       meal: {}
     }
@@ -28,10 +26,10 @@ export default {
     validMeal(){
 
       let pres= false
-      for(var x = 0; x<this.cookbook.length; x++ ){
-        if(this.cookbook[x].nom === this.name){
+      for(var x = 0; x<this.cookBook.cookBook.length; x++ ){
+        if(this.cookBook.cookBook[x].nom === this.name){
           pres= true
-          this.meal= this.cookbook[x]
+          this.meal= this.cookBook.cookBook[x]
         }
       }
 
@@ -42,7 +40,7 @@ export default {
       this.$emit("valid-meal", this.meal)
     },
     randomMeal(){
-      var newName=this.cookbook[Math.floor(Math.random() * this.cookbook.length)].nom
+      var newName=this.cookBook.cookBook[Math.floor(Math.random() * this.cookBook.cookBook.length)].nom
       this.name= newName
     },
     cancelOverlay(){

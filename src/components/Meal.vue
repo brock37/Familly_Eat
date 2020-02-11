@@ -2,7 +2,7 @@
   <div class="meal ui horizontal list" >
     <div class="item">
       <div class="content">
-        <Overlay :cookbook="cookbook" v-if="showSearch" @valid-meal="validMeal" @cancel-meal="closeOverlay"/>
+        <Overlay v-if="showSearch" @valid-meal="validMeal" @cancel-meal="closeOverlay"/>
         <div class="header" @click.prevent="showSearchOverlay()">
           Nom : {{ meal.nom }}
         </div>
@@ -21,7 +21,6 @@ export default {
     Overlay
   },
   props:{
-    cookbook: Array,
     meal: {
       type: Object,
       required: true
