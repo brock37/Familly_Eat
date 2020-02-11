@@ -26,6 +26,7 @@ export default {
     validMeal(){
 
       let pres= false
+
       for(var x = 0; x<this.cookBook.cookBook.length; x++ ){
         if(this.cookBook.cookBook[x].nom === this.name){
           pres= true
@@ -41,6 +42,7 @@ export default {
     },
     randomMeal(){
       var newName=this.cookBook.cookBook[Math.floor(Math.random() * this.cookBook.cookBook.length)].nom
+
       this.name= newName
     },
     cancelOverlay(){

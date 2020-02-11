@@ -21,6 +21,7 @@ export default {
     Overlay
   },
   props:{
+    cookbook: Array,
     meal: {
       type: Object,
       required: true
