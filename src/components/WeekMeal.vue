@@ -62,7 +62,7 @@ export default {
       }
       return res
     },
-    changeMeal(index){
+    changeMeal(arg){
       this.mealForWeek.mealSelected.splice(arg[0],1,arg[1])
     }
   },
