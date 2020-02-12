@@ -1,12 +1,12 @@
 <template lang="html">
   <div class="weekmeal ui center aligned segment container">
     <div class="ui divided list">
-      <div class="item" v-for="jour in JourSemaine">
+      <div class="item" v-for="jour in JourSemaine" v-bind:key="jour">
         <div class="ui header">{{ jour }}</div>
           <div class="content" >
 
             <div class="ui horizontal list">
-              <div class="item" v-for="r in repas">
+              <div class="item" v-for="r in repas" v-bind:key="r">
                 <div class="content">
                   <div class="header">{{ r }}</div>
                   <Meal :meal="mealForWeek.mealSelected[JourSemaine.indexOf(jour) + repas.indexOf(r) * 7]" :idmealweek="JourSemaine.indexOf(jour) + repas.indexOf(r) * 7" @change-meal="changeMeal"/>
