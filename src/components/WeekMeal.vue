@@ -49,18 +49,9 @@ export default {
 
       do{
         newMeal= this.randomMeal()
-      }while(this.inArray(newMeal.id))
+      }while(this.mealForWeek.mealSelected.some( ({id}) => id === newMeal.id))
 
       return newMeal
-    },
-    inArray(id){  //Regarde si la recette est deja utiliser dans la liste du menu de la semaine
-      let res= false
-      for(var x = 0; x<this.mealForWeek.mealSelected.length; x++ ){
-        if(this.mealForWeek.mealSelected[x].id == id){
-          res= true
-        }
-      }
-      return res
     },
     changeMeal(arg){
       this.mealForWeek.mealSelected.splice(arg[0],1,arg[1])
