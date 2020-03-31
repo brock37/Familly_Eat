@@ -1,13 +1,17 @@
 <template lang="html" >
   <div class="overlay">
-    <input type="text" name="search" placeholder="Nom de la recette" list="meal-names" v-model:value="name">
-    <datalist id="meal-names">
-      <option v-for="meal in cookBook.cookBook" v-bind:value="meal.nom"/>
-    </datalist>
-    <br>
-    <button type="button" name="randomMeal" @click.prevent="randomMeal()">Aleatoire</button>
-    <button type="button" name="check" @click.prevent="validMeal()">Valider</button>
-    <button type="button" name="cancel" @click.prevent="cancelOverlay()">Annulez</button>
+    <div class="content">
+      <input type="text" name="search" placeholder="Nom de la recette" list="meal-names" v-model="name">
+      <datalist id="meal-names">
+        <option v-for="meal in cookBook.cookBook" :key="meal.id" v-bind:value="meal.nom"/>
+      </datalist>
+      <br>
+      <button type="button" name="randomMeal" @click.prevent="randomMeal()">Aleatoire</button>
+      <button type="button" name="check" @click.prevent="validMeal()">Valider</button>
+      <button type="button" name="cancel" @click.prevent="closeOverlay()">Annulez</button>
+  
+    </div>
+
   </div>
 
 </template>
@@ -18,35 +22,28 @@ export default {
   data(){
     return{
       cookBook : this.$root.$data.store.state.cookBook,
-      name: "",
-      meal: {}
+      name: ""
     }
   },
   methods: {
     validMeal(){
 
-      let pres= false
-
+      /*Verifie si le nom de la recette existe dans le livre de recette*/
       for(var x = 0; x<this.cookBook.cookBook.length; x++ ){
         if(this.cookBook.cookBook[x].nom === this.name){
-          pres= true
-          this.meal= this.cookBook.cookBook[x]
+          this.$emit("valid-meal", this.cookBook.cookBook[x])
         }
       }
+      this.closeOverlay()
 
-      if(!pres){
-        return
-      }
-      console.log("Emmision validMeal")
-      this.$emit("valid-meal", this.meal)
     },
     randomMeal(){
       var newName=this.cookBook.cookBook[Math.floor(Math.random() * this.cookBook.cookBook.length)].nom
 
       this.name= newName
     },
-    cancelOverlay(){
-      this.$emit("cancel-meal")
+    closeOverlay(){
+      this.$emit("close-overlay")
     }
   }
 }
@@ -54,10 +51,15 @@ export default {
 
 <style lang="css" scoped>
 .overlay{
-  display: block;
-  position: relative;
+  position: absolute;
   z-index: 2;
   border-style: solid;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+
+
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+
 }
 </style>
