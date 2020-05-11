@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="ui three item menu">
     <v-link class="item" href="/">Home</v-link>
+    <v-link class="item" href="/weekmeal">Menu de la semaine</v-link>
     <v-link class="item" href="/add">Ajouter recette</v-link>
 
     <slot></slot>

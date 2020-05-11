@@ -2,5 +2,6 @@
 
 export default {
   '/': 'Home',
+  '/weekmeal': 'Weekmeal',
   '/add': 'Add'
 }

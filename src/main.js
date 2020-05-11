@@ -1,17 +1,19 @@
 import Vue from 'vue'
+import axios from 'axios'
 import routes from './routes.js'
-import BookMeal from './assets/recettes.json'
+import * as api from './lib/axios.js'
 
 Vue.config.productionTip = true
 
 const app = new Vue({
   el: '#app',
   data: {
+    test: undefined,
     currentRoute : window.location.pathname,
     store: {
       state: {
         cookBook: {
-          cookBook : BookMeal,
+          cookBook : null,
           addMeal : function (newMeal) {
             this.cookBook.push(newMeal)
           }
@@ -33,6 +35,15 @@ const app = new Vue({
   },
   render (h) {
     return h(this.ViewComponent)
+  },
+  mounted () {
+    axios.get("http://127.0.0.1:8000/meal")
+    .then(response =>{
+      this.store.state.cookBook.cookBook = response.data.response
+    })
+
+    console.log(api.default.getAllMeal())
+    
   }
 })
 

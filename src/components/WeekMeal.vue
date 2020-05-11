@@ -1,6 +1,8 @@
 <template lang="html">
   <div class="weekmeal ui center aligned segment container">
+
     <Overlay v-if="showSearch" @valid-meal="changeMeal" @close-overlay="showSearch = false"/>
+
     <div class="ui divided list">
       <div class="item" v-for="jour in JourSemaine" v-bind:key="jour">
         <div class="ui header">{{ jour }}</div>
@@ -21,6 +23,7 @@
         </div>
       </div>
     </div>
+    
 </template>
 
 <script>
@@ -43,6 +46,8 @@ export default {
       showSearch : false,
       searchId : null
     }
+  },
+  computed:{
   },
   methods :{
     randomIndex(){
